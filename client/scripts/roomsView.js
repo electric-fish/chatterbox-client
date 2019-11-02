@@ -4,14 +4,27 @@ var RoomsView = {
   $select: $('#rooms select'),
 
   initialize: function() {
+
+    $('.addroom').on('click', function(){ Rooms.add(); });
+    // RoomsView.$select.on('change', )
+
   },
 
   render: function() {
-    for (var i = 0; i < Messages.results.length; i++) {
-      console.log('messages: ', Messages)
-      //html += MessageView.render(Messages.results[i]);
-      //  MessagesView.renderMessage(Messages.results[i]);
-    }
+  },
+
+  renderRoom: function(roomname) {
+    RoomsView.$select.append(RoomView.renderRoom({roomName: roomname}));
   }
 
+};
+
+
+
+var RoomView = {
+  renderRoom: _.template(`
+    <option value=<%- roomName %>>
+      <%- roomName %>
+    </option>
+  `)
 };

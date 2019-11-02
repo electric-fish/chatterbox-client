@@ -28,7 +28,11 @@
       <div id="rooms">
         Room:
         <select></select>
-        <button>Add Room</button>
+        <!-- something is clearly wrong here -->
+        <form action="#" id="add" method="post">
+          <input type="text" name="roomname" id="roomname"/>
+          <button class="addroom">Add Room</button>
+        </form>
       </div>
       <form action="#" id="send" method="post">
         <input type="text" name="message" id="message"/>
