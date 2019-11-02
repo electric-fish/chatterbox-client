@@ -21,7 +21,21 @@ var App = {
     Parse.readAll((data) => {
       // examine the response from the server request:
       // console.log(data);
-      Messages = data;
+
+      //Messages = data;
+
+      Messages = data.results;
+      for( var key in Messages ) {
+        var roomname = Messages[key].roomname;
+
+        if(roomname==='{default}' || roomname==='add') {
+          alert('room name invalid');
+        } else if(roomname === undefined || roomname === null || roomname==='' ) {
+          Rooms['{default}'] = '{default}';
+        } else {
+          Rooms[roomname] = roomname;
+        }
+      }
       callback();
     });
   },

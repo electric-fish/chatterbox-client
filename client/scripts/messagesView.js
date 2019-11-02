@@ -7,7 +7,7 @@ var MessagesView = {
     if(MessagesView !== undefined) {
       setInterval(function() {
         MessagesView.render();
-        MessagesView.$chats.load(MessagesView.$chats);
+        //MessagesView.$chats.load(MessagesView.$chats);
         //window.location = location.href;
       }, 1000);
     }
@@ -20,14 +20,18 @@ var MessagesView = {
     //else if
     //    print things with Messages.results[i].roomname matching
 
-    for (var i = 0; i < Messages.results.length; i++) {
+    //for (var i = 0; i < Messages.results.length; i++) {
+    for (var i = 0; i < Messages.length; i++) {
       /*let msg = {
         username: Messages.results[i].username,
         text: Messages.results[i].text,
         roomname: Messages.results[i].roomname
       }*/
-      if ( Messages.results[i].text !== undefined ) {
-        MessagesView.renderMessage(Messages.results[i]);
+      //if ( Messages.results[i].text !== undefined ) {
+      //  MessagesView.renderMessage(Messages.results[i]);
+      //}
+      if ( Messages[i].text !== undefined ) {
+        MessagesView.renderMessage(Messages[i]);
       }
     }
 

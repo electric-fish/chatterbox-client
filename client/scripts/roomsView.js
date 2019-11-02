@@ -5,16 +5,28 @@ var RoomsView = {
 
   initialize: function() {
 
-    $('.addroom').on('click', function(){ Rooms.add(); });
+    //$('.addroom').on('click', function(){ Rooms.add(); });
     // RoomsView.$select.on('change', )
 
+    if(Rooms !== undefined) {
+      setInterval(function() {
+        RoomsView.render();
+      }, 1000);
+    }
   },
 
   render: function() {
+    for( var key in Rooms ) {
+      console.log(key);
+      if( key !== 'add' ){
+        RoomsView.renderRoom(Rooms[key]);
+      }
+    }
   },
 
   renderRoom: function(roomname) {
-    RoomsView.$select.append(RoomView.renderRoom({roomName: roomname}));
+    let room = RoomView.render(roomname);
+    RoomsView.$select.append(room);
   }
 
 };
@@ -22,9 +34,8 @@ var RoomsView = {
 
 
 var RoomView = {
-  renderRoom: _.template(`
-    <option value=<%- roomName %>>
-      <%- roomName %>
-    </option>
-  `)
+  render: function(roomname){
+  //_.template(`<option value="${roomname}">${roomname}</option>`)
+    return `<option value="${roomname}">${roomname}</option>`;
+  }
 };
