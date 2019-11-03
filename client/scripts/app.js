@@ -20,7 +20,29 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      Messages = data;
+      // console.log(data);
+
+      //Messages = data;
+
+      Messages = data.results;
+      var roomObj = {'roomname': '{default}'};
+      Rooms.storage.push(roomObj);
+      for( var key in Messages ) {
+        var roomname = Messages[key].roomname;
+        //console.log(Messages[key].roomname)
+
+        if( roomname === undefined || roomname === null || roomname === '' ) {
+          //Messages.[key].roomname = '{default}';
+        } else {
+          //Rooms.storage[roomname] = roomname;
+          if( !Rooms.storage.filter( function(element){
+            return element.roomname === roomname}).length > 0 ) {
+              var roomObj = {'roomname': roomname};
+              Rooms.storage.push(roomObj);
+          }
+        }
+      }
+
       callback();
     });
   },

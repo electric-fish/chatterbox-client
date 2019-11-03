@@ -62,7 +62,7 @@ form input[type=text] {
 .chats {
     padding: 5px;
     margin-bottom: 5px;
-    background-color: rgb(184, 206, 238);
+    background-color: rgb(235, 239, 245);
 }
 
 .chats .username {
@@ -88,3 +88,8 @@ form input[type=text] {
     background-color: #0090da;
 }
 
+.roomname {
+    float: right;
+    font-size: 0.875em;
+    color: rgb(149, 156, 167);
+}
