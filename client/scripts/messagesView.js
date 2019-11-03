@@ -19,12 +19,14 @@ var MessagesView = {
       MessagesView.render();
     });
 
-    //MessagesView.$chats.on('click', function(event) {
+    MessagesView.$chats.on('click', function(event) {
     //$('.username').on('click', function(event) {
-    $('#username').click( function(event) {
-      console.log(event.target);
-      //console.log($(event.target).text());
-      //check if text is a username somehow
+    //$('.username').click( function(event) {
+      //console.log(event.target.className)
+      if( event.target.className==='username' ) {
+        //////////DO THE FRIEND THING
+        console.log( $(event.target).text() );
+      }
     });
 
   },
