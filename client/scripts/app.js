@@ -25,17 +25,24 @@ var App = {
       //Messages = data;
 
       Messages = data.results;
+      var roomObj = {'roomname': '{default}'};
+      Rooms.storage.push(roomObj);
       for( var key in Messages ) {
         var roomname = Messages[key].roomname;
+        //console.log(Messages[key].roomname)
 
-        if(roomname==='{default}' || roomname==='add') {
-          alert('room name invalid');
-        } else if(roomname === undefined || roomname === null || roomname==='' ) {
-          Rooms['{default}'] = '{default}';
+        if( roomname === undefined || roomname === null || roomname === '' ) {
+          //Messages.[key].roomname = '{default}';
         } else {
-          Rooms[roomname] = roomname;
+          //Rooms.storage[roomname] = roomname;
+          if( !Rooms.storage.filter( function(element){
+            return element.roomname === roomname}).length > 0 ) {
+              var roomObj = {'roomname': roomname};
+              Rooms.storage.push(roomObj);
+          }
         }
       }
+
       callback();
     });
   },

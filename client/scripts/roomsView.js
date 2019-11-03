@@ -8,7 +8,7 @@ var RoomsView = {
     //$('.addroom').on('click', function(){ Rooms.add(); });
     // RoomsView.$select.on('change', )
 
-    if(Rooms !== undefined) {
+    if(Rooms.storage !== undefined) {
       setInterval(function() {
         RoomsView.render();
       }, 1000);
@@ -16,11 +16,11 @@ var RoomsView = {
   },
 
   render: function() {
-    for( var key in Rooms ) {
-      console.log(key);
-      if( key !== 'add' ){
-        RoomsView.renderRoom(Rooms[key]);
-      }
+    if( RoomsView.$select !== undefined ) {
+      RoomsView.$select.empty();
+    }
+    for( var key in Rooms.storage ) {
+      RoomsView.renderRoom(Rooms.storage[key]);
     }
   },
 
@@ -34,8 +34,14 @@ var RoomsView = {
 
 
 var RoomView = {
-  render: function(roomname){
-  //_.template(`<option value="${roomname}">${roomname}</option>`)
-    return `<option value="${roomname}">${roomname}</option>`;
-  }
+  // render: function(roomname){
+  // //_.template(`<option value="${roomname}">${roomname}</option>`)
+  //   return `<option value="${roomname}">${roomname}</option>`;
+
+  //   // _.template(`<option value="<%- roomname %>>"><%- roomname %></option>`)
+  // }
+
+  render: _.template(`
+    <option value="<%-roomname%>"><%-roomname%></option>
+  `)
 };

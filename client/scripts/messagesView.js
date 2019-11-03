@@ -6,11 +6,26 @@ var MessagesView = {
 
     if(MessagesView !== undefined) {
       setInterval(function() {
+        //try to call fetch from
+        //App.fetch(App.stopSpinner);
         MessagesView.render();
         //MessagesView.$chats.load(MessagesView.$chats);
         //window.location = location.href;
       }, 1000);
     }
+
+    $('submit').on('click', function() {
+      console.log('submit button clicked');
+      MessagesView.render();
+    });
+
+    //MessagesView.$chats.on('click', function(event) {
+    //$('.username').on('click', function(event) {
+    $('#username').click( function(event) {
+      console.log(event.target);
+      //console.log($(event.target).text());
+      //check if text is a username somehow
+    });
 
   },
 
@@ -21,6 +36,9 @@ var MessagesView = {
     //    print things with Messages.results[i].roomname matching
 
     //for (var i = 0; i < Messages.results.length; i++) {
+    if( Messages.$chats !== undefined ) {
+      MessagesView.$chats.empty();
+    }
     for (var i = 0; i < Messages.length; i++) {
       /*let msg = {
         username: Messages.results[i].username,
@@ -34,8 +52,6 @@ var MessagesView = {
         MessagesView.renderMessage(Messages[i]);
       }
     }
-
-   // MessagesView.$chats.append(html);
   },
 
   renderMessage: function(message) {
