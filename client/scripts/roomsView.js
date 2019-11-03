@@ -8,40 +8,34 @@ var RoomsView = {
     //$('.addroom').on('click', function(){ Rooms.add(); });
     // RoomsView.$select.on('change', )
 
-    if(Rooms.storage !== undefined) {
+    /*if(Rooms.storage !== undefined) {
       setInterval(function() {
         RoomsView.render();
       }, 1000);
-    }
+    }*/
+
+    $('button').on('click', Rooms.add);
+
+    RoomsView.$select.on('change', function(){
+      console.log(RoomsView.$select.val());
+    });
   },
 
   render: function() {
-    if( RoomsView.$select !== undefined ) {
-      RoomsView.$select.empty();
-    }
+    // if( RoomsView.$select !== undefined ) {
+    //   RoomsView.$select.empty();
+    // }
+    RoomsView.$select.empty();
     for( var key in Rooms.storage ) {
       RoomsView.renderRoom(Rooms.storage[key]);
     }
   },
 
-  renderRoom: function(roomname) {
-    let room = RoomView.render(roomname);
+  renderRoom: function(roomval) {
+    let room = RoomView.render(roomval);
     RoomsView.$select.append(room);
   }
 
 };
 
 
-
-var RoomView = {
-  // render: function(roomname){
-  // //_.template(`<option value="${roomname}">${roomname}</option>`)
-  //   return `<option value="${roomname}">${roomname}</option>`;
-
-  //   // _.template(`<option value="<%- roomname %>>"><%- roomname %></option>`)
-  // }
-
-  render: _.template(`
-    <option value="<%-roomname%>"><%-roomname%></option>
-  `)
-};

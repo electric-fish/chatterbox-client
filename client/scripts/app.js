@@ -14,6 +14,9 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
+    setInterval( function() {
+      App.fetch();
+    }, 1000 );
 
   },
 
@@ -25,21 +28,24 @@ var App = {
       //Messages = data;
 
       Messages = data.results;
-      var roomObj = {'roomname': '{default}'};
-      Rooms.storage.push(roomObj);
+      //var roomObj = {'roomname': '{default}'};
+      //Rooms.storage.push(roomObj);
+
+      //var roomObj = {'roomname': '(all messages)'};
+      //Rooms.storage.push(roomObj);
       for( var key in Messages ) {
         var roomname = Messages[key].roomname;
         //console.log(Messages[key].roomname)
-
-        if( roomname === undefined || roomname === null || roomname === '' ) {
-          //Messages.[key].roomname = '{default}';
-        } else {
-          //Rooms.storage[roomname] = roomname;
-          if( !Rooms.storage.filter( function(element){
-            return element.roomname === roomname}).length > 0 ) {
-              var roomObj = {'roomname': roomname};
-              Rooms.storage.push(roomObj);
-          }
+        if( !Rooms.storage.filter( function(element){
+          return element.roomname === '(all messages)'}).length > 0 ){
+          var roomObj = {'roomname': '(all messages)'};
+          Rooms.storage.push(roomObj);
+          console.log('?');
+        }
+        if( !Rooms.storage.filter( function(element){
+          return element.roomname === roomname}).length > 0 ) {
+          var roomObj = {'roomname': roomname};
+          Rooms.storage.push(roomObj);
         }
       }
 
