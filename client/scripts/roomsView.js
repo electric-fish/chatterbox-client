@@ -10,7 +10,7 @@ var RoomsView = {
       Rooms.currentRoom[0].roomname = RoomsView.$select.val();
     });
 
-    $('button').on('click', Rooms.add);
+    RoomsView.$button.on('click', Rooms.add);
     //$('.addRoom').on('click', Rooms.add);
 
   },

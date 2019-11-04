@@ -7,11 +7,16 @@ var Rooms = {
   add: function(){
     console.log('room add clicked');
 
-    let newRoom = $('roomname').text();
-    console.log('new room:' + newRoom);
-    Rooms.storage.push(newRoom);
-    Rooms.currentRoom = newRoom;
-    RoomsView.renderRoom(newRoom);
+    //let newRoom = $('#rooms roomname').val();
+    //let newRoom = $('#rooms select').val()
+    let newRoomName = $('#roomname').val()
+    console.log('new room: "' + newRoomName + '"');
+    var roomObj = {roomname: newRoomName};
+    Rooms.storage.push(roomObj);
+    Rooms.currentRoom[0].roomname = newRoomName;
+    RoomsView.renderRoom(roomObj);
+
+    //callback(Rooms.storage);
   }
 
 };

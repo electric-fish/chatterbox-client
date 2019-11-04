@@ -13,41 +13,33 @@ var MessagesView = {
       if( event.target.className==='username' ) {
         var user = $(event.target).text();
         Friends.toggleStatus(user);
+        MessagesView.render();
       }
     });
 
   },
 
   render: function() {
-    //if no room name selected || room (all messages)
-    //    print all
-    //else if
-    //    print things with Messages.results[i].roomname matching
 
     MessagesView.$chats.empty();
 
+    //if no room name selected === room (all messages)
+    //    print all
     if( Rooms.currentRoom[0].roomname === '(all messages)' ) {
       for (var i = 0; i < Messages.length; i++) {
         if ( Messages[i].text !== undefined ) {
           MessagesView.renderMessage(Messages[i]);
         }
       }
+    //else if
+    //    print things with Messages.results[i].roomname matching
     } else {
       for (var i = 0; i < Messages.length; i++) {
         if ( Messages[i].text !== undefined && Messages[i].roomname === Rooms.currentRoom[0].roomname ) {
           MessagesView.renderMessage(Messages[i]);
         }
       }
-
     }
-
-
-    // MessagesView.$chats.empty();
-    // for (var i = 0; i < Messages.length; i++) {
-    //   if ( Messages[i].text !== undefined ) {
-    //     MessagesView.renderMessage(Messages[i]);
-    //   }
-    // }
   },
 
   renderMessage: function(message) {
