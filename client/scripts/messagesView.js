@@ -4,21 +4,12 @@ var MessagesView = {
 
   initialize: function() {
 
-    if(MessagesView !== undefined) {
-      setInterval(function() {
-        //try to call fetch from
-        //App.fetch(App.stopSpinner);
-        //MessagesView.render();
-        //MessagesView.$chats.load(MessagesView.$chats);
-        //window.location = location.href;
-      }, 1000);
-    }
-
     $('submit').on('click', function() {
       MessagesView.render();
     });
 
     MessagesView.$chats.on('click', function(event) {
+      console.log('ohno');
       //console.log(event.target.className)
       if( event.target.className==='username' ) {
         var user = $(event.target).text();
