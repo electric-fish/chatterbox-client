@@ -3,6 +3,7 @@ var App = {
   $spinner: $('.spinner img'),
 
   username: 'anonymous',
+  //roomname: '(all messages)',
 
   initialize: function() {
     App.username = window.location.search.substr(10);

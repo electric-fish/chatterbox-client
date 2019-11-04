@@ -33,10 +33,12 @@ var FormView = {
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
     event.preventDefault();
+
     let newMessage = {
       username: App.username,
       text: $('#message').val(),
-      room: Rooms.currentRoom
+      //roomname: App.roomname
+      roomname: Rooms.currentRoom[0].roomname
     };
     Parse.create(newMessage);
     console.log(newMessage);

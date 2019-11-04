@@ -9,7 +9,6 @@ var MessagesView = {
     });
 
     MessagesView.$chats.on('click', function(event) {
-      console.log('ohno');
       //console.log(event.target.className)
       if( event.target.className==='username' ) {
         var user = $(event.target).text();
@@ -26,11 +25,29 @@ var MessagesView = {
     //    print things with Messages.results[i].roomname matching
 
     MessagesView.$chats.empty();
-    for (var i = 0; i < Messages.length; i++) {
-      if ( Messages[i].text !== undefined ) {
-        MessagesView.renderMessage(Messages[i]);
+
+    if( Rooms.currentRoom[0].roomname === '(all messages)' ) {
+      for (var i = 0; i < Messages.length; i++) {
+        if ( Messages[i].text !== undefined ) {
+          MessagesView.renderMessage(Messages[i]);
+        }
       }
+    } else {
+      for (var i = 0; i < Messages.length; i++) {
+        if ( Messages[i].text !== undefined && Messages[i].roomname === Rooms.currentRoom[0].roomname ) {
+          MessagesView.renderMessage(Messages[i]);
+        }
+      }
+
     }
+
+
+    // MessagesView.$chats.empty();
+    // for (var i = 0; i < Messages.length; i++) {
+    //   if ( Messages[i].text !== undefined ) {
+    //     MessagesView.renderMessage(Messages[i]);
+    //   }
+    // }
   },
 
   renderMessage: function(message) {

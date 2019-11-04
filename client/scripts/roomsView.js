@@ -5,23 +5,17 @@ var RoomsView = {
 
   initialize: function() {
 
-    //$('.addroom').on('click', function(){ Rooms.add(); });
-    // RoomsView.$select.on('change', )
-
-    //$('button').on('click', Rooms.add);
-    $('.addRoom').on('click', Rooms.add);
-
     RoomsView.$select.on('change', function(){
+      console.log(RoomsView.$select.val());
       Rooms.currentRoom[0].roomname = RoomsView.$select.val();
     });
+
+    $('button').on('click', Rooms.add);
+    //$('.addRoom').on('click', Rooms.add);
+
   },
 
   render: function() {
-    //if( Rooms.currentRoom )
-
-    // if( RoomsView.$select !== undefined ) {
-    //   RoomsView.$select.empty();
-    // }
     RoomsView.$select.empty();
 
     RoomsView.renderRoom(Rooms.currentRoom[0]);
