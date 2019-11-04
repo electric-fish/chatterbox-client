@@ -88,6 +88,9 @@ form input[type=text] {
     background-color: #0090da;
 }
 
+.friend:hover {
+    background-color: #545b88;
+}
 .roomname {
     float: right;
     font-size: 0.875em;
