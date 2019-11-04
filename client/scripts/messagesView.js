@@ -8,7 +8,7 @@ var MessagesView = {
       setInterval(function() {
         //try to call fetch from
         //App.fetch(App.stopSpinner);
-        MessagesView.render();
+        //MessagesView.render();
         //MessagesView.$chats.load(MessagesView.$chats);
         //window.location = location.href;
       }, 1000);

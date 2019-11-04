@@ -14,6 +14,7 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
+
     setInterval( function() {
       App.fetch();
     }, 1000 );
@@ -48,6 +49,9 @@ var App = {
           Rooms.storage.push(roomObj);
         }
       }
+
+      MessagesView.render();
+      RoomsView.render();
 
       callback();
     });

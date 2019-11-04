@@ -8,13 +8,7 @@ var RoomsView = {
     //$('.addroom').on('click', function(){ Rooms.add(); });
     // RoomsView.$select.on('change', )
 
-    /*if(Rooms.storage !== undefined) {
-      setInterval(function() {
-        RoomsView.render();
-      }, 1000);
-    }*/
-
-    $('button').on('click', Rooms.add);
+    //$('button').on('click', Rooms.add);
 
     RoomsView.$select.on('change', function(){
       console.log(RoomsView.$select.val());
